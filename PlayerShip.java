@@ -6,11 +6,13 @@ public class PlayerShip extends Actor
     public static int currentTick = 0;
     public static int shipSizeX = 64;
     public static int shipSizeY = 49;
+    public int health = 5;
     
     public void act() 
     {
         movement();
         shoot();
+        hitDetection();
     }
     
     public void movement()
@@ -22,13 +24,19 @@ public class PlayerShip extends Actor
         if(Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("a"))
         {
             currentX -= shipSpeed;
-            if(currentX < (shipSizeX/2)) currentX = (shipSizeX/2);
+            if(currentX < (shipSizeX/2)) 
+            {
+                currentX = (shipSizeX/2);
+            }
             setLocation(currentX, currentY);
         }
         else if(Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("d"))
         {
             currentX += shipSpeed;
-            if(currentX > (world.getWidth() - (shipSizeX/2))) currentX = world.getWidth() - (shipSizeX/2);
+            if(currentX > (world.getWidth() - (shipSizeX/2))) 
+            {
+                currentX = world.getWidth() - (shipSizeX/2);
+            }
             setLocation(currentX, currentY);
         }
     }
@@ -36,7 +44,10 @@ public class PlayerShip extends Actor
     public void shoot()
     {
         currentTick = (currentTick + 1) % shootEveryTick;
-        if(currentTick == 0 && Greenfoot.isKeyDown("space")) fire();
+        if(currentTick == 0 && Greenfoot.isKeyDown("space")) 
+        {
+            fire();
+        }
     }
     
     public void fire()
@@ -48,6 +59,30 @@ public class PlayerShip extends Actor
         if(bullet != null && world != null)
         {
             world.addObject(bullet, xPosi, yPosi);
+        }
+    }
+    
+    public void hitDetection()
+    {
+        EnemyBullet enemyBullet = (EnemyBullet) getOneIntersectingObject(EnemyBullet.class);
+        if(enemyBullet != null)
+        {
+            World world = getWorld();
+            world.removeObject(enemyBullet);
+            hit();
+        }
+    }
+    
+    public void hit()
+    {
+        health--;
+        //deleteHeart
+        //invincible
+        if(health <= 0)
+        {   
+            World world = getWorld();
+            world.removeObject(this);
+            //gameOver
         }
     }
 }

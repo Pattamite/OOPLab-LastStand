@@ -5,14 +5,16 @@ public class EnemyShip extends Actor
 {
 
     public static int shipSpeed = 1;
-    public static int shootEveryTick = 60;
+    public static int shootEveryTick = 80;
     public static int shipSizeX = 68;
     public static int shipSizeY = 55;
+    public int health = 3;
     
     public void act() 
     {
         movement();
         shoot();
+        hitDetection();
     }
     
     public void movement()
@@ -41,6 +43,28 @@ public class EnemyShip extends Actor
         if(bullet != null && world != null)
         {
             world.addObject(bullet, xPosi, yPosi);
+        }
+    }
+    
+    public void hitDetection()
+    {
+        PlayerBullet playerBullet = (PlayerBullet) getOneIntersectingObject(PlayerBullet.class);
+        if(playerBullet != null)
+        {
+            World world = getWorld();
+            world.removeObject(playerBullet);
+            hit();
+        }
+    }
+    
+    public void hit()
+    {
+        health--;
+        if(health <= 0)
+        {
+            //addScore
+            World world = getWorld();
+            world.removeObject(this);
         }
     }
 }
