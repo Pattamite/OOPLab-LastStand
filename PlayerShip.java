@@ -6,13 +6,23 @@ public class PlayerShip extends Actor
     public static int currentTick = 0;
     public static int shipSizeX = 64;
     public static int shipSizeY = 49;
+    public int invincTick = 100;
     public int health = 5;
+    public int remainInvincTick = 0;
+    public int invincBlinkTick = 4;
+    
+    private GreenfootImage trans = new GreenfootImage("playerShip1_blue_invi.png");
+    private GreenfootImage normal = new GreenfootImage("playerShip1_blue.png");
     
     public void act() 
     {
         movement();
         shoot();
         hitDetection();
+        if(remainInvincTick > 0)
+        {
+            invincible();
+        }
     }
     
     public void movement()
@@ -90,14 +100,39 @@ public class PlayerShip extends Actor
     
     public void hit(int value)
     {
-        health = health - value;
-        //deleteHeart
-        //invincible
+        if(remainInvincTick <= 0)
+        {
+            health = health - value;
+            //deleteHeart
+            remainInvincTick = invincTick;
+        }
+        
         if(health <= 0)
         {   
             World world = getWorld();
             world.removeObject(this);
             //gameOver
         }
+    }
+    
+    public void invincible()
+    {
+        if(remainInvincTick == 1) 
+        {
+            setImage(normal);
+        }
+        else if(remainInvincTick % invincBlinkTick == 0)
+        {
+            if(getImage() == normal)
+            {
+                setImage(trans);
+            }
+            else
+            {
+                setImage(normal);
+            }
+        }
+        
+        remainInvincTick = remainInvincTick -1;
     }
 }
