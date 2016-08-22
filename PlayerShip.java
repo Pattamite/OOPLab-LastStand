@@ -43,10 +43,17 @@ public class PlayerShip extends Actor
     
     public void shoot()
     {
-        currentTick = (currentTick + 1) % shootEveryTick;
-        if(currentTick == 0 && Greenfoot.isKeyDown("space")) 
+        if(Greenfoot.isKeyDown("space")) 
         {
-            fire();
+            if(currentTick == 0)
+            {
+                fire();
+            }
+            currentTick = (currentTick + 1) % shootEveryTick;
+        }
+        else
+        {
+            currentTick = 0;
         }
     }
     

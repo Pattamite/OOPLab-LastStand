@@ -10,6 +10,9 @@ public class EnemyShip extends Actor
     public static int shipSizeY = 55;
     public int health = 3;
     
+    private GreenfootImage health2 = new GreenfootImage("enemyBlack2_damage1.png");
+    private GreenfootImage health1 = new GreenfootImage("enemyBlack2_damage2.png");
+    
     public void act() 
     {
         movement();
@@ -60,7 +63,15 @@ public class EnemyShip extends Actor
     public void hit(int value)
     {
         health = health - value;
-        if(health <= 0)
+        if(health == 2) 
+        {
+            setImage(health2);
+        }
+        else if(health == 1)
+        {
+            setImage(health1);
+        }
+        else if(health <= 0)
         {
             //addScore
             World world = getWorld();
