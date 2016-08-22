@@ -69,13 +69,21 @@ public class PlayerShip extends Actor
         {
             World world = getWorld();
             world.removeObject(enemyBullet);
-            hit();
+            hit(1);
+        }
+        
+        EnemyShip enemyShip = (EnemyShip) getOneIntersectingObject(EnemyShip.class);
+        if(enemyShip != null)
+        {
+            World world = getWorld();
+            world.removeObject(enemyShip);
+            hit(2);
         }
     }
     
-    public void hit()
+    public void hit(int value)
     {
-        health--;
+        health = health - value;
         //deleteHeart
         //invincible
         if(health <= 0)

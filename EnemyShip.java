@@ -53,13 +53,13 @@ public class EnemyShip extends Actor
         {
             World world = getWorld();
             world.removeObject(playerBullet);
-            hit();
+            hit(1);
         }
     }
     
-    public void hit()
+    public void hit(int value)
     {
-        health--;
+        health = health - value;
         if(health <= 0)
         {
             //addScore
