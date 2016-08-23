@@ -40,5 +40,32 @@ public class MyWorld extends World
         addObject(enemyship5,764,92);
         EnemyShip enemyship6 = new EnemyShip();
         addObject(enemyship6,86,79);
+        enemyship6.setLocation(102,90);
+        enemyship.setLocation(194,89);
+        enemyship2.setLocation(318,89);
+        enemyship.setLocation(208,88);
+        enemyship3.setLocation(421,87);
+        enemyship4.setLocation(529,88);
+        enemyship5.setLocation(635,88);
+        EnemyShip enemyship7 = new EnemyShip();
+        addObject(enemyship7,740,93);
+        enemyship.setLocation(203,92);
+        enemyship2.setLocation(302,90);
+        enemyship3.setLocation(406,88);
+        enemyship4.setLocation(505,89);
+        enemyship5.setLocation(603,91);
+        enemyship7.setLocation(704,92);
+        EnemyShip enemyship8 = new EnemyShip();
+        addObject(enemyship8,806,96);
+        removeObject(enemyship6);
+        removeObject(enemyship);
+        removeObject(enemyship2);
+        removeObject(enemyship3);
+        removeObject(enemyship4);
+        removeObject(enemyship5);
+        removeObject(enemyship7);
+        removeObject(enemyship8);
+        EnemySpawner enemyspawner = new EnemySpawner();
+        addObject(enemyspawner,456,18);
     }
 }

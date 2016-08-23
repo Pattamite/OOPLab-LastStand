@@ -1,15 +1,16 @@
 import greenfoot.*;
 public class PlayerShip extends Actor
 {
-    public static int shipSpeed = 7;
-    public static int shootEveryTick = 10;
-    public static int currentTick = 0;
     public static int shipSizeX = 64;
     public static int shipSizeY = 49;
-    public int invincTick = 100;
+    private static int shipSpeed = 7;
+    private static int shootEveryTick = 10;
+    private static int currentTick = 0;
+    
     public int health = 5;
     public int remainInvincTick = 0;
-    public int invincBlinkTick = 4;
+    private int invincTick = 100;
+    private int invincBlinkTick = 4;
     
     private GreenfootImage trans = new GreenfootImage("playerShip1_blue_invi.png");
     private GreenfootImage normal = new GreenfootImage("playerShip1_blue.png");
@@ -23,9 +24,10 @@ public class PlayerShip extends Actor
         {
             invincible();
         }
+        checkDead();
     }
     
-    public void movement()
+    private void movement()
     {
         int currentX = getX();
         int currentY = getY();
@@ -51,7 +53,7 @@ public class PlayerShip extends Actor
         }
     }
     
-    public void shoot()
+    private void shoot()
     {
         if(Greenfoot.isKeyDown("space")) 
         {
@@ -67,7 +69,7 @@ public class PlayerShip extends Actor
         }
     }
     
-    public void fire()
+    private void fire()
     {
         PlayerBullet bullet = new PlayerBullet();
         World world = getWorld();
@@ -79,7 +81,7 @@ public class PlayerShip extends Actor
         }
     }
     
-    public void hitDetection()
+    private void hitDetection()
     {
         EnemyBullet enemyBullet = (EnemyBullet) getOneIntersectingObject(EnemyBullet.class);
         if(enemyBullet != null)
@@ -88,6 +90,8 @@ public class PlayerShip extends Actor
             world.removeObject(enemyBullet);
             hit(1);
         }
+        
+       
         
         EnemyShip enemyShip = (EnemyShip) getOneIntersectingObject(EnemyShip.class);
         if(enemyShip != null)
@@ -98,7 +102,7 @@ public class PlayerShip extends Actor
         }
     }
     
-    public void hit(int value)
+    private void hit(int value)
     {
         if(remainInvincTick <= 0)
         {
@@ -106,16 +110,9 @@ public class PlayerShip extends Actor
             //deleteHeart
             remainInvincTick = invincTick;
         }
-        
-        if(health <= 0)
-        {   
-            World world = getWorld();
-            world.removeObject(this);
-            //gameOver
-        }
     }
     
-    public void invincible()
+    private void invincible()
     {
         if(remainInvincTick == 1) 
         {
@@ -134,5 +131,15 @@ public class PlayerShip extends Actor
         }
         
         remainInvincTick = remainInvincTick -1;
+    }
+    
+    void checkDead()
+    {
+        if(health <= 0)
+        {   
+            World world = getWorld();
+            world.removeObject(this);
+            //gameOver
+        }
     }
 }
