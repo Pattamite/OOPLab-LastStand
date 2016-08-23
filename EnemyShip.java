@@ -6,10 +6,10 @@ public class EnemyShip extends Actor
 
     public static int shipSpeed = 1;
     public static int shootEveryTick = 80;
-    public static int shipSizeX = 68;
-    public static int shipSizeY = 55;
-    public int health = 3;
+    private static int shipSizeX = 68;
+    private static int shipSizeY = 55;
     
+    public int health = 3;
     private GreenfootImage health2 = new GreenfootImage("enemyBlack2_damage1.png");
     private GreenfootImage health1 = new GreenfootImage("enemyBlack2_damage2.png");
     
@@ -20,7 +20,7 @@ public class EnemyShip extends Actor
         hitDetection();
     }
     
-    public void movement()
+    private void movement()
     {
         int currentX = getX();
         int currentY = getY();
@@ -28,7 +28,7 @@ public class EnemyShip extends Actor
         setLocation(currentX, currentY + shipSpeed);
     }
     
-    public void shoot()
+    private void shoot()
     {
  
         if(Greenfoot.getRandomNumber(shootEveryTick) == 0) 
@@ -37,7 +37,7 @@ public class EnemyShip extends Actor
         }
     }
     
-    public void fire()
+    private void fire()
     {
         EnemyBullet bullet = new EnemyBullet();
         World world = getWorld();
@@ -49,7 +49,7 @@ public class EnemyShip extends Actor
         }
     }
     
-    public void hitDetection()
+    private void hitDetection()
     {
         PlayerBullet playerBullet = (PlayerBullet) getOneIntersectingObject(PlayerBullet.class);
         if(playerBullet != null)
@@ -60,7 +60,7 @@ public class EnemyShip extends Actor
         }
     }
     
-    public void hit(int value)
+    private void hit(int value)
     {
         health = health - value;
         if(health == 2) 

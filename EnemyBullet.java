@@ -1,11 +1,11 @@
 import greenfoot.*;
 public class EnemyBullet extends Actor
 {
-    public static int bulletSpeed = 7;
-    public static int bulletSizeX = 12;
-    public static int bulletSizeY = 12;
+    private static int bulletSpeed = 7;
+    private static int bulletSizeX = 12;
+    private static int bulletSizeY = 12;
     
-    public boolean isSetup = false;
+    private boolean isSetup = false;
     
     public void act() 
     {
@@ -17,12 +17,12 @@ public class EnemyBullet extends Actor
         movement();
     }
     
-    public void setup()
+    private void setup()
     {
         turn(90);
     }
     
-    public void movement()
+    private void movement()
     {
         if(isAtEdge())
         {
