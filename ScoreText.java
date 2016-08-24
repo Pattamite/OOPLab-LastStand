@@ -1,16 +1,16 @@
 import greenfoot.*;
 import java.awt.Color;
 
-public class PlayerHealthText extends Actor
+public class ScoreText extends Actor
 {
-    private int fontSize = 20;
+    private int fontSize = 30;
     private Color fontColor = Color.BLACK;
     private Color bgColor = new Color(0, 0, 0, 0);
-    private String textCounter = "x ";
+    private String textCounter = "Score : ";
     
-    public PlayerHealthText()
+    public ScoreText()
     {
-        GreenfootImage text = new GreenfootImage(textCounter + "N/A", fontSize, fontColor, bgColor);
+        GreenfootImage text = new GreenfootImage(textCounter + "0", fontSize, fontColor, bgColor);
         setImage(text);
     }
     

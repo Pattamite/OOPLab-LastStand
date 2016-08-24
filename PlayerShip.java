@@ -91,8 +91,6 @@ public class PlayerShip extends Actor
             hit(1);
         }
         
-       
-        
         EnemyShip enemyShip = (EnemyShip) getOneIntersectingObject(EnemyShip.class);
         if(enemyShip != null)
         {
@@ -107,8 +105,20 @@ public class PlayerShip extends Actor
         if(remainInvincTick <= 0)
         {
             health = health - value;
-            //deleteHeart
+            if(health < 0) health = 0;
             remainInvincTick = invincTick;
+            
+            MyWorld world = (MyWorld) getWorld();
+            if(world != null)
+            {
+                GameTracker tracker = world.getGameTracker();
+                tracker.playerHit();
+            }
+            else
+            {
+                System.out.print("Error at PlayerShip : MyWorld in hit not found!");
+            }
+            
         }
     }
     

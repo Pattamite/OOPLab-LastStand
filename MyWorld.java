@@ -8,11 +8,15 @@ import greenfoot.*;
  */
 public class MyWorld extends World
 {
-
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
+    public PlayerShip playership;
+    public EnemySpawner enemyspawner;
+    public PlayerHeart playerheart;
+    public BaseShield baseshield;
+    public PlayerHealthText playerhealthtext;
+    public BaseHealthText basehealthtext;
+    public GameTracker gametracker;
+    public ScoreText scoretext;
+    
     public MyWorld()
     {    
         // Create a new world with 900x800 cells with a cell size of 1x1 pixels.
@@ -20,28 +24,70 @@ public class MyWorld extends World
         prepare();
     }
 
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
     private void prepare()
     {
-        PlayerShip playership = new PlayerShip();
+        playership = new PlayerShip();
         addObject(playership,450,730);
-        EnemySpawner enemyspawner = new EnemySpawner();
+
+        enemyspawner = new EnemySpawner();
         addObject(enemyspawner,456,18);
-        
-        PlayerHeart playerheart = new PlayerHeart();
+
+        playerheart = new PlayerHeart();
         addObject(playerheart,31,22);
-        
-        BaseShield baseshield = new BaseShield();
+
+        baseshield = new BaseShield();
         addObject(baseshield,150,22);
-        
-        PlayerHealthText playerhealthtext = new PlayerHealthText();
+
+        playerhealthtext = new PlayerHealthText();
         addObject(playerhealthtext,70,22);
-        
-        BaseHealthText basehealthtext = new BaseHealthText();
+
+        basehealthtext = new BaseHealthText();
         addObject(basehealthtext,190,22);
 
+        gametracker = new GameTracker();
+        addObject(gametracker,0,0);
+
+        scoretext = new ScoreText();
+        addObject(scoretext,770,22);
+    }
+    
+    public PlayerShip getPlayerShip()
+    {
+        return playership;
+    }
+    
+    public EnemySpawner getEnemySpawner()
+    {
+        return enemyspawner;
+    }
+    
+    public PlayerHeart getPlayerHeart()
+    {
+        return playerheart;
+    }
+    
+    public BaseShield getBaseShield()
+    {
+        return baseshield;
+    }
+    
+    public PlayerHealthText getPlayerHealthText()
+    {
+        return playerhealthtext;
+    }
+    
+    public BaseHealthText getBaseHealthText()
+    {
+        return basehealthtext;
+    }
+    
+    public GameTracker getGameTracker()
+    {
+        return gametracker;
+    }
+    
+    public ScoreText getScoreText()
+    {
+        return scoretext;
     }
 }
