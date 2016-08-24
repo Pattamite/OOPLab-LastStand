@@ -7,10 +7,10 @@ public class PlayerShip extends Actor
     private static int shootEveryTick = 10;
     private static int currentTick = 0;
     
-    public int health = 5;
     public int remainInvincTick = 0;
+    public boolean isDead = false;
     private int invincTick = 100;
-    private int invincBlinkTick = 4;
+    private int invincBlinkTick = 3;
     
     private GreenfootImage trans = new GreenfootImage("playerShip1_blue_invi.png");
     private GreenfootImage normal = new GreenfootImage("playerShip1_blue.png");
@@ -91,8 +91,6 @@ public class PlayerShip extends Actor
             hit(1);
         }
         
-       
-        
         EnemyShip enemyShip = (EnemyShip) getOneIntersectingObject(EnemyShip.class);
         if(enemyShip != null)
         {
@@ -106,15 +104,17 @@ public class PlayerShip extends Actor
     {
         if(remainInvincTick <= 0)
         {
-            health = health - value;
-            //deleteHeart
             remainInvincTick = invincTick;
+            
+            MyWorld world = (MyWorld) getWorld();
+            GameTracker tracker = world.getGameTracker();
+            tracker.playerHit(value);
         }
     }
     
     private void invincible()
     {
-        if(remainInvincTick == 1) 
+        if(remainInvincTick <= 1) 
         {
             setImage(normal);
         }
@@ -135,11 +135,10 @@ public class PlayerShip extends Actor
     
     void checkDead()
     {
-        if(health <= 0)
+        if(isDead == true)
         {   
             World world = getWorld();
             world.removeObject(this);
-            //gameOver
         }
     }
 }

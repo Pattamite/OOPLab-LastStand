@@ -6,10 +6,12 @@ public class EnemyShip extends Actor
 
     public static int shipSpeed = 1;
     public static int shootEveryTick = 80;
+    public static int score = 100;
     private static int shipSizeX = 68;
     private static int shipSizeY = 55;
     
     public int health = 3;
+    public boolean isDead = false;
     private GreenfootImage health2 = new GreenfootImage("enemyBlack2_damage1.png");
     private GreenfootImage health1 = new GreenfootImage("enemyBlack2_damage2.png");
     
@@ -18,6 +20,8 @@ public class EnemyShip extends Actor
         movement();
         shoot();
         hitDetection();
+        checkAtBase();
+        checkDead();
     }
     
     private void movement()
@@ -73,9 +77,35 @@ public class EnemyShip extends Actor
         }
         else if(health <= 0)
         {
-            //addScore
+            addScore(score);
+            isDead = true;
+        }
+    }
+    
+    private void checkDead()
+    {
+        if(isDead == true)
+        {
             World world = getWorld();
             world.removeObject(this);
+        }
+    }
+    
+    private void addScore(int value)
+    {
+        MyWorld world = (MyWorld) getWorld();
+        GameTracker tracker = world.getGameTracker();
+        tracker.addScore(score);
+    }
+    
+    private void checkAtBase()
+    {
+        if(isAtEdge() == true)
+        {
+            MyWorld world = (MyWorld) getWorld();
+            GameTracker tracker = world.getGameTracker();
+            tracker.baseHit(1);
+            isDead = true;
         }
     }
 }

@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 /**
  * Write a description of class MyWorld here.
@@ -8,64 +8,88 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
+    public PlayerShip playership;
+    public EnemySpawner enemyspawner;
+    public PlayerHeart playerheart;
+    public BaseShield baseshield;
+    public PlayerHealthText playerhealthtext;
+    public BaseHealthText basehealthtext;
+    public GameTracker gametracker;
+    public ScoreText scoretext;
+    
     public MyWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        // Create a new world with 900x800 cells with a cell size of 1x1 pixels.
         super(900, 800, 1); 
         prepare();
     }
 
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
     private void prepare()
     {
-        PlayerShip playership = new PlayerShip();
+        setBackground(new GreenfootImage("GameBackground.png"));
+        
+        playership = new PlayerShip();
         addObject(playership,450,730);
-        EnemyShip enemyship = new EnemyShip();
-        addObject(enemyship,239,86);
-        EnemyShip enemyship2 = new EnemyShip();
-        addObject(enemyship2,394,88);
-        EnemyShip enemyship3 = new EnemyShip();
-        addObject(enemyship3,509,89);
-        EnemyShip enemyship4 = new EnemyShip();
-        addObject(enemyship4,632,89);
-        EnemyShip enemyship5 = new EnemyShip();
-        addObject(enemyship5,764,92);
-        EnemyShip enemyship6 = new EnemyShip();
-        addObject(enemyship6,86,79);
-        enemyship6.setLocation(102,90);
-        enemyship.setLocation(194,89);
-        enemyship2.setLocation(318,89);
-        enemyship.setLocation(208,88);
-        enemyship3.setLocation(421,87);
-        enemyship4.setLocation(529,88);
-        enemyship5.setLocation(635,88);
-        EnemyShip enemyship7 = new EnemyShip();
-        addObject(enemyship7,740,93);
-        enemyship.setLocation(203,92);
-        enemyship2.setLocation(302,90);
-        enemyship3.setLocation(406,88);
-        enemyship4.setLocation(505,89);
-        enemyship5.setLocation(603,91);
-        enemyship7.setLocation(704,92);
-        EnemyShip enemyship8 = new EnemyShip();
-        addObject(enemyship8,806,96);
-        removeObject(enemyship6);
-        removeObject(enemyship);
-        removeObject(enemyship2);
-        removeObject(enemyship3);
-        removeObject(enemyship4);
-        removeObject(enemyship5);
-        removeObject(enemyship7);
-        removeObject(enemyship8);
-        EnemySpawner enemyspawner = new EnemySpawner();
+
+        enemyspawner = new EnemySpawner();
         addObject(enemyspawner,456,18);
+
+        playerheart = new PlayerHeart();
+        addObject(playerheart,31,22);
+
+        baseshield = new BaseShield();
+        addObject(baseshield,150,22);
+
+        playerhealthtext = new PlayerHealthText();
+        addObject(playerhealthtext,70,22);
+
+        basehealthtext = new BaseHealthText();
+        addObject(basehealthtext,190,22);
+
+        gametracker = new GameTracker();
+        addObject(gametracker,0,0);
+
+        scoretext = new ScoreText();
+        addObject(scoretext,770,22);
+    }
+    
+    public PlayerShip getPlayerShip()
+    {
+        return playership;
+    }
+    
+    public EnemySpawner getEnemySpawner()
+    {
+        return enemyspawner;
+    }
+    
+    public PlayerHeart getPlayerHeart()
+    {
+        return playerheart;
+    }
+    
+    public BaseShield getBaseShield()
+    {
+        return baseshield;
+    }
+    
+    public PlayerHealthText getPlayerHealthText()
+    {
+        return playerhealthtext;
+    }
+    
+    public BaseHealthText getBaseHealthText()
+    {
+        return basehealthtext;
+    }
+    
+    public GameTracker getGameTracker()
+    {
+        return gametracker;
+    }
+    
+    public ScoreText getScoreText()
+    {
+        return scoretext;
     }
 }
