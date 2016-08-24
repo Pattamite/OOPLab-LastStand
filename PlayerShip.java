@@ -10,7 +10,7 @@ public class PlayerShip extends Actor
     public int health = 5;
     public int remainInvincTick = 0;
     private int invincTick = 100;
-    private int invincBlinkTick = 4;
+    private int invincBlinkTick = 3;
     
     private GreenfootImage trans = new GreenfootImage("playerShip1_blue_invi.png");
     private GreenfootImage normal = new GreenfootImage("playerShip1_blue.png");
@@ -114,7 +114,7 @@ public class PlayerShip extends Actor
     
     private void invincible()
     {
-        if(remainInvincTick == 1) 
+        if(remainInvincTick <= 1) 
         {
             setImage(normal);
         }

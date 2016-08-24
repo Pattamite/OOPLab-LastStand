@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 public class EnemySpawner extends Actor
 {
@@ -20,7 +20,11 @@ public class EnemySpawner extends Actor
     private int spawnPositionY = 90;
     private int lastSpawnColumn = Greenfoot.getRandomNumber(spawnPositionX.length);
     
-    
+    public EnemySpawner()
+    {
+        GreenfootImage img = getImage();
+        //img.clear();
+    }
     
     public void act() 
     {
