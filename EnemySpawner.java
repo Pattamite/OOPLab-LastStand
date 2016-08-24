@@ -17,7 +17,7 @@ public class EnemySpawner extends Actor
     private int levelTickPassed = 0;
     
     private int spawnPositionX[] = {100, 200, 300, 400, 500, 600, 700, 800};
-    private int spawnPositionY = 90;
+    private int spawnPositionY = 80;
     private int lastSpawnColumn = Greenfoot.getRandomNumber(spawnPositionX.length);
     
     public EnemySpawner()

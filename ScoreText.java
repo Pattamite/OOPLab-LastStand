@@ -4,7 +4,7 @@ import java.awt.Color;
 public class ScoreText extends Actor
 {
     private int fontSize = 30;
-    private Color fontColor = Color.BLACK;
+    private Color fontColor = Color.WHITE;
     private Color bgColor = new Color(0, 0, 0, 0);
     private String textCounter = "Score : ";
     

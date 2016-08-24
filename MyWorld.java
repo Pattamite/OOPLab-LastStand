@@ -26,6 +26,8 @@ public class MyWorld extends World
 
     private void prepare()
     {
+        setBackground(new GreenfootImage("GameBackground.png"));
+        
         playership = new PlayerShip();
         addObject(playership,450,730);
 

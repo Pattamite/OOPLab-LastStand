@@ -4,7 +4,7 @@ import java.awt.Color;
 public class PlayerHealthText extends Actor
 {
     private int fontSize = 20;
-    private Color fontColor = Color.BLACK;
+    private Color fontColor = Color.WHITE;
     private Color bgColor = new Color(0, 0, 0, 0);
     private String textCounter = "x ";
     
