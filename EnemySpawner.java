@@ -6,11 +6,11 @@ public class EnemySpawner extends Actor
     private int levelUpTick = 600;
     
     private int currentSpawnTick = 600;
-    private int tickPerLevel = 10;
+    private int tickPerLevel = 20;
     private int tickCap = 200;
     
     private int guaranteeSpawnTick = 200;
-    private int guaranteeTickPerLevel = 4;
+    private int guaranteeTickPerLevel = 8;
     private int guaranteeTickCap = 80;
     
     private int tickPassed = 0;
