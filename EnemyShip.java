@@ -20,6 +20,7 @@ public class EnemyShip extends Actor
         movement();
         shoot();
         hitDetection();
+        checkAtBase();
         checkDead();
     }
     
@@ -95,5 +96,16 @@ public class EnemyShip extends Actor
         MyWorld world = (MyWorld) getWorld();
         GameTracker tracker = world.getGameTracker();
         tracker.addScore(score);
+    }
+    
+    private void checkAtBase()
+    {
+        if(isAtEdge() == true)
+        {
+            MyWorld world = (MyWorld) getWorld();
+            GameTracker tracker = world.getGameTracker();
+            tracker.baseHit(1);
+            isDead = true;
+        }
     }
 }

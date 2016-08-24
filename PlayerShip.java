@@ -7,8 +7,8 @@ public class PlayerShip extends Actor
     private static int shootEveryTick = 10;
     private static int currentTick = 0;
     
-    public int health = 5;
     public int remainInvincTick = 0;
+    public boolean isDead = false;
     private int invincTick = 100;
     private int invincBlinkTick = 3;
     
@@ -104,21 +104,11 @@ public class PlayerShip extends Actor
     {
         if(remainInvincTick <= 0)
         {
-            health = health - value;
-            if(health < 0) health = 0;
             remainInvincTick = invincTick;
             
             MyWorld world = (MyWorld) getWorld();
-            if(world != null)
-            {
-                GameTracker tracker = world.getGameTracker();
-                tracker.playerHit();
-            }
-            else
-            {
-                System.out.print("Error at PlayerShip : MyWorld in hit not found!");
-            }
-            
+            GameTracker tracker = world.getGameTracker();
+            tracker.playerHit(value);
         }
     }
     
@@ -145,11 +135,10 @@ public class PlayerShip extends Actor
     
     void checkDead()
     {
-        if(health <= 0)
+        if(isDead == true)
         {   
             World world = getWorld();
             world.removeObject(this);
-            //gameOver
         }
     }
 }

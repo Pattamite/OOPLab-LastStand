@@ -16,4 +16,6 @@ comment7.params=
 comment7.target=void\ checkDead()
 comment8.params=value
 comment8.target=void\ addScore(int)
-numComments=9
+comment9.params=
+comment9.target=void\ checkAtBase()
+numComments=10

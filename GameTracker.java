@@ -23,8 +23,6 @@ public class GameTracker extends Actor
     private void setup()
     {
         MyWorld world = (MyWorld) getWorld();
-        PlayerShip player = world.getPlayerShip(); 
-        playerHealth = player.health;
         
         PlayerHealthText playHealthText = world.getPlayerHealthText();
         playHealthText.updateValue(playerHealth);
@@ -33,15 +31,26 @@ public class GameTracker extends Actor
         baseHealthText.updateValue(baseHealth);
     }
     
-    public void playerHit()
+    public void playerHit(int value)
     {
+        playerHealth = playerHealth - value;
+        if(playerHealth < 0)
+        {
+            playerHealth = 0;
+        }
+        
         MyWorld world = (MyWorld) getWorld();
-        PlayerShip player = world.getPlayerShip(); 
-        playerHealth = player.health;
         PlayerHealthText text = world.getPlayerHealthText();
         text.updateValue(playerHealth);
+        PlayerHeart playerHeart = world.getPlayerHeart();
+        playerHeart.blinkActive();
         
-        //if(playerHealth <= 0) gameover();
+        if(playerHealth <= 0) 
+        {
+            PlayerShip player = world.getPlayerShip();
+            player.isDead = true;
+            //gameover();
+        }
     }
     
     public void baseHit(int value)
@@ -55,8 +64,10 @@ public class GameTracker extends Actor
         MyWorld world = (MyWorld) getWorld();
         BaseHealthText text = world.getBaseHealthText();
         text.updateValue(baseHealth);
+        BaseShield baseShield = world.getBaseShield();
+        baseShield.blinkActive();
 
-        //if(playerHealth == 0) gameover();
+        //if(baseHealth <= 0) gameover();
     }
     
     public void addScore(int value)

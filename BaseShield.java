@@ -1,19 +1,46 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class BaseShield here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class BaseShield extends Actor
 {
-    /**
-     * Act - do whatever the BaseShield wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    public boolean isActive = false;
+    
+    private int totalBlinkTick = 90;
+    private int blinkTick = 3;
+    private int remainTick = 0;
+    
+    private GreenfootImage normal = new GreenfootImage("BaseShield.png");
+    private GreenfootImage trans = new GreenfootImage("BaseShieldTrans.png");
+    
     public void act() 
     {
-        // Add your action code here.
-    }    
+        if(isActive == true) blink();
+    }
+    
+    private void blink()
+    {
+        if(remainTick <=0)
+        {
+            setImage(normal);
+            isActive = false;
+        }
+        else if(remainTick % blinkTick == 0)
+        {
+            if(getImage() == normal)
+            {
+                setImage(trans);
+            }
+            else
+            {
+                setImage(normal);
+            }
+        }
+        
+        remainTick = remainTick - 1;
+    }
+    
+    public void blinkActive()
+    {
+        remainTick = totalBlinkTick;
+        isActive = true;
+    }
 }
