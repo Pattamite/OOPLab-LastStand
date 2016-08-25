@@ -6,10 +6,14 @@ public class GameTracker extends Actor
     public int baseHealth = 5;
     public int score = 0;
     
+    public static int highScore = 0;
+    public static int thisScore = 0;
+    public static int overReason = 0;
+    
     private boolean isSetup = false;
     
     private GreenfootImage playerPic = new GreenfootImage("PlayerHeart.png");
-    private GreenfootImage pbasePic = new GreenfootImage("BaseShield.png");
+    private GreenfootImage basePic = new GreenfootImage("BaseShield.png");
     
     public void act() 
     {
