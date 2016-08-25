@@ -6,6 +6,8 @@ public class EnemyBullet extends Actor
     private static int bulletSizeY = 12;
     
     private boolean isSetup = false;
+    private boolean isHoming = false;
+    public int degree = 90;
     
     public void act() 
     {
@@ -19,7 +21,24 @@ public class EnemyBullet extends Actor
     
     private void setup()
     {
-        turn(90);
+        if(isHoming == true)
+        {
+            MyWorld world = (MyWorld) getWorld();
+            if(world.playership != null)
+            {
+                int xTarget = world.playership.getX();
+                int yTarget = world.playership.getY();
+                turnTowards(xTarget, yTarget);
+            }
+            else 
+            {
+                turn(degree);
+            }
+        }
+        else 
+        {
+            turn(degree);
+        }
     }
     
     private void movement()

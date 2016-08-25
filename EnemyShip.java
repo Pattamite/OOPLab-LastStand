@@ -44,6 +44,7 @@ public class EnemyShip extends Actor
     private void fire()
     {
         EnemyBullet bullet = new EnemyBullet();
+        bullet.degree = 90;
         World world = getWorld();
         int xPosi = getX();
         int yPosi = (int)(getY()+(shipSizeY/2));
