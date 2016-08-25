@@ -18,5 +18,14 @@ public class GameOver extends World
         OverReasonText overreasontext = new OverReasonText();
         addObject(overreasontext,450,250);
 
+        ThisScoreText thisscoretext = new ThisScoreText();
+        addObject(thisscoretext,450,390);
+
+        HighScoreText highscoretext = new HighScoreText();
+        addObject(highscoretext,450,440);
+
+        NewHighScoreText newhighscoretext = new NewHighScoreText();
+        addObject(newhighscoretext,450,490);
+
     }
 }

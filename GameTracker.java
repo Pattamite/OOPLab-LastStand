@@ -9,6 +9,7 @@ public class GameTracker extends Actor
     public static int highScore = 0;
     public static int thisScore = 0;
     public static int overReason = 0;
+    public static boolean newHighScore = true;
     
     private boolean isSetup = false;
     

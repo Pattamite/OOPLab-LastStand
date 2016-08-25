@@ -1,19 +1,19 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
+import java.awt.Color;
 
-/**
- * Write a description of class HighScoreText here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class HighScoreText extends GameOverClass
 {
-    /**
-     * Act - do whatever the HighScoreText wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
+    private int fontSize = 40;
+    private Color fontColor = new Color(26, 117, 255);
+    private Color bgColor = new Color(0, 0, 0, 0);
+    private String textString = "HighScoreText";
+    
+    public HighScoreText() 
     {
-        // Add your action code here.
+        textString = "High Score : " + GameTracker.highScore ;
+        
+        GreenfootImage text = new GreenfootImage(textString, fontSize, fontColor, bgColor);
+        setImage(text);
     }    
 }
