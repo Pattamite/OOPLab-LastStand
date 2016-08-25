@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Thu Aug 25 20:05:14 GMT+07:00 2016
+#Thu Aug 25 21:16:57 GMT+07:00 2016
 target16.name=TitleText
 class.ReturnToMenuText.superclass=GameOverClass
 dependency35.to=MyWorld
@@ -68,6 +68,7 @@ target8.name=ReturnToMenuText
 dependency36.to=HowToPlayButton
 target22.name=ScoreText
 dependency10.type=UsesDependency
+class.EnemyShip2.superclass=greenfoot.Actor
 dependency17.type=UsesDependency
 dependency14.from=MyWorld
 package.numTargets=26
@@ -180,6 +181,7 @@ dependency50.from=GameOver
 target7.width=90
 target13.name=EnemyShip
 target21.width=90
+class.EnemyShip2.image=enemyShip_2.png
 dependency21.to=GameTracker
 target6.name=HighScoreText
 target16.showInterface=false
@@ -407,7 +409,7 @@ dependency9.type=UsesDependency
 dependency46.from=PlayAgainText
 dependency49.type=UsesDependency
 target21.typeParameters=
-world.lastInstantiated=GameOver
+world.lastInstantiated=MyWorld
 dependency14.to=BaseHealthText
 target18.typeParameters=
 target19.showInterface=false

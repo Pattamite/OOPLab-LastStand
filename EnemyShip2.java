@@ -1,18 +1,18 @@
 import greenfoot.*;
 
-
-public class EnemyShip extends Actor
+public class EnemyShip2 extends Actor
 {
     public static int shipSpeed = 1;
-    public static int shootEveryTick = 80;
-    public static int score = 100;
-    private static int shipSizeX = 68;
-    private static int shipSizeY = 55;
+    public static int shootEveryTick = 200;
+    public static int score = 200;
+    private static int shipSizeX = 75;
+    private static int shipSizeY = 77;
+    private static int degreeChange = 20;
     
-    public int health = 3;
+    public int health = 5;
     public boolean isDead = false;
-    private GreenfootImage health2 = new GreenfootImage("enemyBlack2_damage1.png");
-    private GreenfootImage health1 = new GreenfootImage("enemyBlack2_damage2.png");
+    private GreenfootImage health2 = new GreenfootImage("enemyShip_2_damaged1.png");
+    private GreenfootImage health1 = new GreenfootImage("enemyShip_2_damaged2.png");
     
     public void act() 
     {
@@ -44,12 +44,18 @@ public class EnemyShip extends Actor
     {
         EnemyBullet bullet = new EnemyBullet();
         bullet.degree = 90;
+        EnemyBullet bullet2 = new EnemyBullet();
+        bullet2.degree = 90 + degreeChange;
+        EnemyBullet bullet3 = new EnemyBullet();
+        bullet3.degree = 90 - degreeChange;
         World world = getWorld();
         int xPosi = getX();
         int yPosi = (int)(getY()+(shipSizeY/2));
-        if(bullet != null && world != null)
+        if( world != null)
         {
             world.addObject(bullet, xPosi, yPosi);
+            world.addObject(bullet2, xPosi, yPosi-1);
+            world.addObject(bullet3, xPosi, yPosi+1);
         }
     }
     
@@ -67,7 +73,7 @@ public class EnemyShip extends Actor
     private void hit(int value)
     {
         health = health - value;
-        if(health == 2) 
+        if(health == 3) 
         {
             setImage(health2);
         }
@@ -107,5 +113,5 @@ public class EnemyShip extends Actor
             tracker.baseHit(1);
             isDead = true;
         }
-    }
+    }   
 }
