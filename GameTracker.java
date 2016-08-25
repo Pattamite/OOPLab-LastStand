@@ -16,12 +16,23 @@ public class GameTracker extends Actor
     private GreenfootImage playerPic = new GreenfootImage("PlayerHeart.png");
     private GreenfootImage basePic = new GreenfootImage("BaseShield.png");
     
+    private boolean isGameOver = false;
+    private int gameOverTick = 300;
+    private static int playerDeadTime = 0;
+    private int dsEasterTime = 3;
+    private boolean isDsTrigger = false;
+    
     public void act() 
     {
         if(isSetup == false)
         {
             setup();
             isSetup = true;
+        }
+        
+        if(isGameOver == true)
+        {
+            gameOverState();
         }
     }
     
@@ -54,7 +65,7 @@ public class GameTracker extends Actor
         {
             PlayerShip player = world.getPlayerShip();
             player.isDead = true;
-            //gameover();
+            gameOver();
         }
     }
     
@@ -72,7 +83,7 @@ public class GameTracker extends Actor
         BaseShield baseShield = world.getBaseShield();
         baseShield.blinkActive();
 
-        //if(baseHealth <= 0) gameover();
+        gameOver();
     }
     
     public void addScore(int value)
@@ -82,5 +93,57 @@ public class GameTracker extends Actor
         MyWorld world = (MyWorld) getWorld();
         ScoreText text = world.getScoreText();
         text.updateValue(score);
+    }
+    
+    private void gameOver()
+    {
+        thisScore = score;
+        if(thisScore > highScore)
+        {
+            highScore = thisScore;
+            newHighScore = true;
+        }
+        else
+        {
+            newHighScore = false;
+        }
+        
+        
+        if(playerHealth == 0)
+        {
+            overReason = 0;
+            playerDeadTime = (playerDeadTime + 1) % dsEasterTime;
+            if(playerDeadTime == 0)
+            {
+                isDsTrigger = true;
+                gameOverTick = 900;
+            }
+        }
+        else
+        {
+            overReason = 1;
+        }
+        
+        isGameOver = true;
+    }
+    
+    private void gameOverState()
+    {
+        gameOverTick = gameOverTick -1;
+        if(gameOverTick <= 0)
+        {
+            GameOver world = new GameOver();
+            Greenfoot.setWorld(world);
+        }
+        
+        if(isDsTrigger == true)
+        {
+            dsEasterEvent();
+        }
+    }
+    
+    private void dsEasterEvent()
+    {
+        
     }
 }
