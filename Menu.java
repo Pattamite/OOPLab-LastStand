@@ -1,21 +1,26 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class Menu here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class Menu extends World
 {
 
-    /**
-     * Constructor for objects of class Menu.
-     * 
-     */
     public Menu()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(900, 800, 1); 
+        prepare();
+    }
+
+    private void prepare()
+    {
+        setBackground(new GreenfootImage("GameBackground.png"));
+
+        TitleText titletext = new TitleText();
+        addObject(titletext,450,200);
+
+        PlayButton playbutton = new PlayButton();
+        addObject(playbutton,450,430);
+
+        HowToPlayButton howtoplaybutton = new HowToPlayButton();
+        addObject(howtoplaybutton,450,525);
     }
 }
