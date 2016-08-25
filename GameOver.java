@@ -2,6 +2,10 @@ import greenfoot.*;
 
 public class GameOver extends World
 {
+    public GreenfootSound song = new GreenfootSound("GameOverSong.mp3");
+    private boolean isSetup = false;
+    private int songVolume = 43;
+    
     public GameOver()
     {    
         super(900, 800, 1); 
@@ -33,5 +37,20 @@ public class GameOver extends World
         ReturnToMenuText returntomenutext = new ReturnToMenuText();
         addObject(returntomenutext,450,690);
 
+    }
+    
+     public void act()
+    {
+        if(isSetup == false)
+        {
+            setup();
+        }
+    }
+    
+    private void setup()
+    {
+        song.setVolume(songVolume);
+        song.playLoop();
+        isSetup = true;
     }
 }

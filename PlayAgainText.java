@@ -31,6 +31,8 @@ public class PlayAgainText extends GameOverClass
        
        if (Greenfoot.mouseClicked(this)) 
        {
+           GameOver gameOver = (GameOver) getWorld();
+           gameOver.song.stop();
            Greenfoot.setWorld(world);
        }
     }    

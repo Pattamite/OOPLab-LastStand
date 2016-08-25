@@ -14,6 +14,8 @@ public class PlayerShip extends Actor
     
     private GreenfootImage trans = new GreenfootImage("playerShip1_blue_invi.png");
     private GreenfootImage normal = new GreenfootImage("playerShip1_blue.png");
+    private GreenfootSound deadSound = new GreenfootSound("PlayerDown.mp3");
+    private GreenfootSound hitSound = new GreenfootSound("PlayerHit.mp3");
     
     public void act() 
     {
@@ -88,6 +90,7 @@ public class PlayerShip extends Actor
         {
             World world = getWorld();
             world.removeObject(enemyBullet);
+            if(remainInvincTick == 0) hitSound.play();
             hit(1);
         }
         
@@ -96,6 +99,7 @@ public class PlayerShip extends Actor
         {
             World world = getWorld();
             world.removeObject(enemyShip);
+            if(remainInvincTick == 0)hitSound.play();
             hit(2);
         }
     }
@@ -137,6 +141,7 @@ public class PlayerShip extends Actor
     {
         if(isDead == true)
         {   
+            deadSound.play();
             World world = getWorld();
             world.removeObject(this);
         }

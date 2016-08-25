@@ -9,6 +9,9 @@ public class EnemyBullet extends Actor
     public boolean isHoming = false;
     public int degree = 90;
     
+    private GreenfootSound sound = new GreenfootSound("EnemyFire.mp3");
+    private int soundVolume = 40;
+    
     public void act() 
     {
         if(!isSetup)
@@ -21,6 +24,9 @@ public class EnemyBullet extends Actor
     
     private void setup()
     {
+        sound.setVolume(soundVolume);
+        sound.play();
+        
         if(isHoming == true)
         {
             MyWorld world = (MyWorld) getWorld();

@@ -14,6 +14,11 @@ public class EnemyShip2 extends Actor
     private GreenfootImage health2 = new GreenfootImage("enemyShip_2_damaged1.png");
     private GreenfootImage health1 = new GreenfootImage("enemyShip_2_damaged2.png");
     
+    private GreenfootSound baseHitSound = new GreenfootSound("BaseHit.mp3");
+    private int baseHitVolume = 40;
+    private GreenfootSound deadSound = new GreenfootSound("EnemyDown.mp3");
+    private int deadSoundVolume = 60;
+    
     public void act() 
     {
         movement();
@@ -83,6 +88,8 @@ public class EnemyShip2 extends Actor
         }
         else if(health <= 0)
         {
+            deadSound.setVolume(deadSoundVolume);
+            deadSound.play();
             addScore(score);
             isDead = true;
         }
@@ -92,6 +99,7 @@ public class EnemyShip2 extends Actor
     {
         if(isDead == true)
         {
+
             World world = getWorld();
             world.removeObject(this);
         }
@@ -110,6 +118,11 @@ public class EnemyShip2 extends Actor
         {
             MyWorld world = (MyWorld) getWorld();
             GameTracker tracker = world.getGameTracker();
+            if(tracker.isGameOver == false && tracker.baseHealth > 1)
+            {
+                baseHitSound.setVolume(baseHitVolume);
+                baseHitSound.play();
+            }
             tracker.baseHit(1);
             isDead = true;
         }

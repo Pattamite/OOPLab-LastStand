@@ -22,6 +22,8 @@ public class GameTracker extends Actor
     private int dsEasterTime = 3;
     private boolean isDsTrigger = false;
     
+    
+    
     public GameTracker()
     {
         GreenfootImage img = getImage();
@@ -90,7 +92,11 @@ public class GameTracker extends Actor
         baseShield.blinkActive();
         if(baseHealth <= 0)
         {
-            if(isGameOver == false) gameOver();
+            if(isGameOver == false)
+            {
+                world.basedestroyedpic.activate();
+                gameOver();
+            }
         }
     }
     
@@ -132,6 +138,9 @@ public class GameTracker extends Actor
             overReason = 1;
         }
         
+        MyWorld myWorld = (MyWorld) getWorld();
+        myWorld.song.stop();
+        
         isGameOver = true;
     }
     
@@ -140,6 +149,7 @@ public class GameTracker extends Actor
         gameOverTick = gameOverTick -1;
         if(gameOverTick <= 0)
         {
+            
             GameOver world = new GameOver();
             Greenfoot.setWorld(world);
         }

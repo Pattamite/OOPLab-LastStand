@@ -31,6 +31,8 @@ public class ReturnToMenuText extends GameOverClass
        
        if (Greenfoot.mouseClicked(this)) 
        {
+           GameOver gameOver = (GameOver) getWorld();
+           gameOver.song.stop();
            Greenfoot.setWorld(world);
        }
     }    

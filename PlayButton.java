@@ -25,13 +25,14 @@ public class PlayButton extends MenuClass
        }
        if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this))
        {
-
            GreenfootImage text = new GreenfootImage(textString, fontSize, fontColor, bgColor);
            setImage(text);
        }
        
        if (Greenfoot.mouseClicked(this)) 
        {
+           Menu menu = (Menu) getWorld();
+           menu.song.stop();
            Greenfoot.setWorld(world);
        }
     }    

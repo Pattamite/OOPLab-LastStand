@@ -3,7 +3,10 @@ import greenfoot.*;
 
 public class Menu extends World
 {
-
+    public GreenfootSound song = new GreenfootSound("MenuSong.mp3");
+    private boolean isSetup = false;
+    private int songVolume = 50;
+    
     public Menu()
     {    
         super(900, 800, 1);
@@ -22,5 +25,20 @@ public class Menu extends World
 
         HowToPlayButton howtoplaybutton = new HowToPlayButton();
         addObject(howtoplaybutton,450,525);
+    }
+    
+    public void act()
+    {
+        if(isSetup == false)
+        {
+            setup();
+        }
+    }
+    
+    private void setup()
+    {
+        song.setVolume(songVolume);
+        song.playLoop();
+        isSetup = true;
     }
 }
