@@ -1,19 +1,26 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class DsEasterPic here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class DsEasterPic extends Actor
 {
-    /**
-     * Act - do whatever the DsEasterPic wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
+    GreenfootImage pic = new GreenfootImage("YouDiedPic.png");
+    GreenfootSound sound = new GreenfootSound("YouDied.mp3");
+    public DsEasterPic()
     {
-        // Add your action code here.
-    }    
+        pic.setTransparency(0);
+        setImage(pic);
+    }
+    
+    public void setTrans(int value)
+    {
+        if(value < 0) value = 0;
+        else if(value > 255) value = 255;
+        
+        pic.setTransparency(value);
+        setImage(pic);
+    }
+    
+    public void playSound()
+    {
+        sound.play();
+    }
 }

@@ -17,9 +17,9 @@ public class GameTracker extends Actor
     private GreenfootImage basePic = new GreenfootImage("BaseShield.png");
     
     private boolean isGameOver = false;
-    private int gameOverTick = 300;
+    private int gameOverTick = 200;
     private static int playerDeadTime = 0;
-    private int dsEasterTime = 3;
+    private int dsEasterTime = 1;
     private boolean isDsTrigger = false;
     
     public void act() 
@@ -65,7 +65,7 @@ public class GameTracker extends Actor
         {
             PlayerShip player = world.getPlayerShip();
             player.isDead = true;
-            gameOver();
+            if(isGameOver == false) gameOver();
         }
     }
     
@@ -82,8 +82,10 @@ public class GameTracker extends Actor
         text.updateValue(baseHealth);
         BaseShield baseShield = world.getBaseShield();
         baseShield.blinkActive();
-
-        gameOver();
+        if(baseHealth <= 0)
+        {
+            if(isGameOver == false) gameOver();
+        }
     }
     
     public void addScore(int value)
@@ -116,7 +118,7 @@ public class GameTracker extends Actor
             if(playerDeadTime == 0)
             {
                 isDsTrigger = true;
-                gameOverTick = 900;
+                gameOverTick = 800;
             }
         }
         else
@@ -144,6 +146,15 @@ public class GameTracker extends Actor
     
     private void dsEasterEvent()
     {
-        
+        if(gameOverTick < 700)
+        {
+            MyWorld world = (MyWorld) getWorld();
+            world.dseasterpic.setTrans(800 - gameOverTick);
+        }
+        if(gameOverTick == 690)
+        {
+            MyWorld world = (MyWorld) getWorld();
+            world.dseasterpic.playSound();
+        }
     }
 }

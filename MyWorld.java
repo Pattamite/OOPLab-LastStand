@@ -16,6 +16,7 @@ public class MyWorld extends World
     public BaseHealthText basehealthtext;
     public GameTracker gametracker;
     public ScoreText scoretext;
+    public DsEasterPic dseasterpic;
     
     public MyWorld()
     {    
@@ -26,8 +27,9 @@ public class MyWorld extends World
 
     private void prepare()
     {
+        setPaintOrder(DsEasterPic.class);
         setBackground(new GreenfootImage("GameBackground.png"));
-        
+
         playership = new PlayerShip();
         addObject(playership,450,730);
 
@@ -51,6 +53,10 @@ public class MyWorld extends World
 
         scoretext = new ScoreText();
         addObject(scoretext,770,22);
+        
+        dseasterpic = new DsEasterPic();
+        addObject(dseasterpic,450,400);
+        
     }
     
     public PlayerShip getPlayerShip()
@@ -91,5 +97,10 @@ public class MyWorld extends World
     public ScoreText getScoreText()
     {
         return scoretext;
+    }
+    
+    public DsEasterPic getDsEasterPic()
+    {
+        return dseasterpic;
     }
 }
