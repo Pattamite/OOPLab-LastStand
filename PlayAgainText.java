@@ -1,19 +1,37 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
+import java.awt.Color;
 
-/**
- * Write a description of class PlayAgainText here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class PlayAgainText extends GameOverClass
 {
-    /**
-     * Act - do whatever the PlayAgainText wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private int fontSize = 50;
+    private Color fontColor = new Color(51, 204, 51);
+    private Color mouseColor = new Color(133, 224, 133);
+    private Color bgColor = new Color(0, 0, 0, 0);
+    private String textString = "Play Again";
+    private MyWorld world = new MyWorld();
+    
+    public PlayAgainText()
+    {
+       GreenfootImage text = new GreenfootImage(textString, fontSize, fontColor, bgColor);
+       setImage(text);
+    }
+    
     public void act() 
     {
-        // Add your action code here.
+       if(Greenfoot.mouseMoved(this) == true)
+       {
+           GreenfootImage text = new GreenfootImage(textString, fontSize, mouseColor, bgColor);
+           setImage(text);
+       }
+       if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this))
+       {
+           GreenfootImage text = new GreenfootImage(textString, fontSize, fontColor, bgColor);
+           setImage(text);
+       }
+       
+       if (Greenfoot.mouseClicked(this)) 
+       {
+           Greenfoot.setWorld(world);
+       }
     }    
 }

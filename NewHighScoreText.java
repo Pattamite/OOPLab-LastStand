@@ -5,11 +5,11 @@ import java.awt.Color;
 public class NewHighScoreText extends GameOverClass
 {
     private int fontSize = 40;
-    private Color fontColor = new Color(128, 128, 0);
-    private Color blinkColor = new Color(255, 255, 153);
+    private Color fontColor = new Color(170, 170, 0);
+    private Color blinkColor = new Color(255, 255, 0);
     private Color bgColor = new Color(0, 0, 0, 0);
     private String textString = "!!! New High Score !!!";
-    private int blinkTick = 2;
+    private int blinkTick = 3;
     private int tickPassed = 0;
     private boolean colorBlink = false;
     

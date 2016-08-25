@@ -1,19 +1,37 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
+import java.awt.Color;
 
-/**
- * Write a description of class ReturnToMenuText here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class ReturnToMenuText extends GameOverClass
 {
-    /**
-     * Act - do whatever the ReturnToMenuText wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private int fontSize = 50;
+    private Color fontColor = new Color(255, 255, 0);
+    private Color mouseColor = new Color(255, 255, 153);
+    private Color bgColor = new Color(0, 0, 0, 0);
+    private String textString = "Return to Main Menu";
+    private Menu world = new Menu();
+    
+    public ReturnToMenuText()
+    {
+       GreenfootImage text = new GreenfootImage(textString, fontSize, fontColor, bgColor);
+       setImage(text);
+    }
+    
     public void act() 
     {
-        // Add your action code here.
+        if(Greenfoot.mouseMoved(this) == true)
+       {
+           GreenfootImage text = new GreenfootImage(textString, fontSize, mouseColor, bgColor);
+           setImage(text);
+       }
+       if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this))
+       {
+           GreenfootImage text = new GreenfootImage(textString, fontSize, fontColor, bgColor);
+           setImage(text);
+       }
+       
+       if (Greenfoot.mouseClicked(this)) 
+       {
+           Greenfoot.setWorld(world);
+       }
     }    
 }

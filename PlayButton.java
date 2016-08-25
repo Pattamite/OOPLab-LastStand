@@ -1,7 +1,6 @@
 import greenfoot.*;
 import java.awt.Color;
 
-
 public class PlayButton extends MenuClass
 {
     private int fontSize = 70;

@@ -27,5 +27,11 @@ public class GameOver extends World
         NewHighScoreText newhighscoretext = new NewHighScoreText();
         addObject(newhighscoretext,450,490);
 
+        PlayAgainText playagaintext = new PlayAgainText();
+        addObject(playagaintext,450,630);
+
+        ReturnToMenuText returntomenutext = new ReturnToMenuText();
+        addObject(returntomenutext,450,690);
+
     }
 }
