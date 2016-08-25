@@ -16,11 +16,17 @@ public class GameTracker extends Actor
     private GreenfootImage playerPic = new GreenfootImage("PlayerHeart.png");
     private GreenfootImage basePic = new GreenfootImage("BaseShield.png");
     
-    private boolean isGameOver = false;
+    public boolean isGameOver = false;
     private int gameOverTick = 200;
     private static int playerDeadTime = 0;
-    private int dsEasterTime = 1;
+    private int dsEasterTime = 3;
     private boolean isDsTrigger = false;
+    
+    public GameTracker()
+    {
+        GreenfootImage img = getImage();
+        //img.clear();
+    }
     
     public void act() 
     {

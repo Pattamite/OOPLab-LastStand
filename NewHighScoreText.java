@@ -20,6 +20,11 @@ public class NewHighScoreText extends GameOverClass
             GreenfootImage text = new GreenfootImage(textString, fontSize, fontColor, bgColor);
             setImage(text);
         }
+        else
+        {
+            GreenfootImage text = new GreenfootImage(textString, fontSize, new Color(0, 0, 0, 0), bgColor);
+            setImage(text);
+        }
     }
     
     public void act() 
