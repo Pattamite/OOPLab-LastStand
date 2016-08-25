@@ -6,7 +6,7 @@ public class Menu extends World
 
     public Menu()
     {    
-        super(900, 800, 1); 
+        super(900, 800, 1);
         prepare();
     }
 
