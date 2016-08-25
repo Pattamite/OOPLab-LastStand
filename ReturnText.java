@@ -1,23 +1,25 @@
 import greenfoot.*;
 import java.awt.Color;
 
-public class HowToPlayButton extends MenuClass
+
+public class ReturnText extends HowToPlayClass
 {
-    private int fontSize = 70;
-    private Color fontColor = new Color(255, 71, 26);
-    private Color mouseColor = new Color(255, 133, 102);
+    private int fontSize = 50;
+    private Color fontColor = new Color(255, 255, 0);
+    private Color mouseColor = new Color(255, 255, 153);
     private Color bgColor = new Color(0, 0, 0, 0);
-    private String textString = "How to Play";
-  
-    public HowToPlayButton()
+    private String textString = "Return to Main Menu";
+    private Menu world = new Menu();
+    
+    public ReturnText()
     {
        GreenfootImage text = new GreenfootImage(textString, fontSize, fontColor, bgColor);
        setImage(text);
-    }
+    }  
     
     public void act() 
-    { 
-       if(Greenfoot.mouseMoved(this) == true)
+    {
+        if(Greenfoot.mouseMoved(this) == true)
        {
            GreenfootImage text = new GreenfootImage(textString, fontSize, mouseColor, bgColor);
            setImage(text);
@@ -30,10 +32,8 @@ public class HowToPlayButton extends MenuClass
        
        if (Greenfoot.mouseClicked(this)) 
        {
-           HowToPlay world = new HowToPlay();
-           Menu menu = (Menu) getWorld();
-           menu.song.stop();
-           Greenfoot.setWorld(world);
+           Menu menu = new Menu();
+           Greenfoot.setWorld(menu);
        }
     }    
 }

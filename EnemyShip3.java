@@ -4,7 +4,7 @@ public class EnemyShip3 extends Actor
 {
     public static int shipSpeed = 1;
     public static int shootEveryTick = 120;
-    public static int score = 100;
+    public static int score = 150;
     private static int shipSizeX = 61;
     private static int shipSizeY = 70;
     

@@ -27,7 +27,7 @@ public class GameTracker extends Actor
     public GameTracker()
     {
         GreenfootImage img = getImage();
-        //img.clear();
+        img.clear();
     }
     
     public void act() 

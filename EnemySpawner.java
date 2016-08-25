@@ -25,7 +25,7 @@ public class EnemySpawner extends Actor
     public EnemySpawner()
     {
         GreenfootImage img = getImage();
-        //img.clear();
+        img.clear();
     }
     
     public void act() 
