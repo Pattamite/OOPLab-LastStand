@@ -3,7 +3,7 @@ import greenfoot.*;
 public class GameTracker extends Actor
 {
     public int playerHealth = 5;
-    public int baseHealth = 5;
+    public int baseHealth = 3;
     public int score = 0;
     
     public static int highScore = 0;
@@ -19,7 +19,7 @@ public class GameTracker extends Actor
     public boolean isGameOver = false;
     private int gameOverTick = 200;
     private static int playerDeadTime = 0;
-    private int dsEasterTime = 3;
+    private int dsEasterTime = 10;
     private boolean isDsTrigger = false;
     
     
