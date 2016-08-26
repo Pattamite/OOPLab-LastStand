@@ -66,47 +66,35 @@ public class EnemySpawner extends Actor
         }
         else if(level == 4)
         {
-            enemyTypeRate[0] = 70;
-            enemyTypeRate[1] = 0;
-            enemyTypeRate[2] = 30;
-        }
-        else if(level == 5)
-        {
             enemyTypeRate[0] = 60;
             enemyTypeRate[1] = 0;
             enemyTypeRate[2] = 40;
         }
-        else if(level == 6)
+        else if(level == 5)
         {
             enemyTypeRate[0] = 55;
             enemyTypeRate[1] = 10;
             enemyTypeRate[2] = 35;
         }
-        else if(level == 7)
+        else if(level == 6)
         {
             enemyTypeRate[0] = 50;
             enemyTypeRate[1] = 20;
             enemyTypeRate[2] = 30;
         }
-        else if(level == 9)
-        {
-            enemyTypeRate[0] = 45;
-            enemyTypeRate[1] = 25;
-            enemyTypeRate[2] = 30;
-        }
-        else if(level == 12)
+        else if(level == 8)
         {
             enemyTypeRate[0] = 40;
             enemyTypeRate[1] = 30;
             enemyTypeRate[2] = 30;
         }
-        else if(level == 15)
+        else if(level == 11)
         {
             enemyTypeRate[0] = 20;
             enemyTypeRate[1] = 40;
             enemyTypeRate[2] = 40;
         }
-        else if(level == 20)
+        else if(level == 15)
         {
             enemyTypeRate[0] = 10;
             enemyTypeRate[1] = 45;
