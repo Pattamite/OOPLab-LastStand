@@ -10,7 +10,7 @@ public class EnemyBullet extends Actor
     public int degree = 90;
     
     private GreenfootSound sound = new GreenfootSound("EnemyFire.mp3");
-    private int soundVolume = 40;
+    private int soundVolume = 50;
     
     public void act() 
     {

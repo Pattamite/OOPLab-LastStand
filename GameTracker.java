@@ -19,7 +19,7 @@ public class GameTracker extends Actor
     public boolean isGameOver = false;
     private int gameOverTick = 200;
     private static int playerDeadTime = 0;
-    private int dsEasterTime = 10;
+    private int dsEasterTime = 20;
     private boolean isDsTrigger = false;
     
     
