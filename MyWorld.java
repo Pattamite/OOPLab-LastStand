@@ -1,11 +1,5 @@
 import greenfoot.*;
 
-/**
- * Write a description of class MyWorld here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class MyWorld extends World
 {
     public PlayerShip playership;
@@ -16,6 +10,12 @@ public class MyWorld extends World
     public BaseHealthText basehealthtext;
     public GameTracker gametracker;
     public ScoreText scoretext;
+    public DsEasterPic dseasterpic;
+    public BaseDestroyedPic basedestroyedpic;
+    
+    public GreenfootSound song = new GreenfootSound("GameSong.mp3");
+    private boolean isSetup = false;
+    private int songVolume = 43;
     
     public MyWorld()
     {    
@@ -26,8 +26,9 @@ public class MyWorld extends World
 
     private void prepare()
     {
+        setPaintOrder(DsEasterPic.class);
         setBackground(new GreenfootImage("GameBackground.png"));
-        
+
         playership = new PlayerShip();
         addObject(playership,450,730);
 
@@ -51,6 +52,27 @@ public class MyWorld extends World
 
         scoretext = new ScoreText();
         addObject(scoretext,770,22);
+
+        dseasterpic = new DsEasterPic();
+        addObject(dseasterpic,450,400);
+
+        basedestroyedpic = new BaseDestroyedPic();
+        addObject(basedestroyedpic,450,700);
+    }
+    
+    public void act()
+    {
+        if(isSetup == false)
+        {
+            setup();
+        }
+    }
+    
+    private void setup()
+    {
+        song.setVolume(songVolume);
+        song.playLoop();
+        isSetup = true;
     }
     
     public PlayerShip getPlayerShip()
@@ -91,5 +113,15 @@ public class MyWorld extends World
     public ScoreText getScoreText()
     {
         return scoretext;
+    }
+    
+    public DsEasterPic getDsEasterPic()
+    {
+        return dseasterpic;
+    }
+    
+    public BaseDestroyedPic getBaseDestroyedPic()
+    {
+        return basedestroyedpic;
     }
 }

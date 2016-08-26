@@ -6,6 +6,11 @@ public class EnemyBullet extends Actor
     private static int bulletSizeY = 12;
     
     private boolean isSetup = false;
+    public boolean isHoming = false;
+    public int degree = 90;
+    
+    private GreenfootSound sound = new GreenfootSound("EnemyFire.mp3");
+    private int soundVolume = 40;
     
     public void act() 
     {
@@ -19,7 +24,20 @@ public class EnemyBullet extends Actor
     
     private void setup()
     {
-        turn(90);
+        sound.setVolume(soundVolume);
+        sound.play();
+        
+        if(isHoming == true)
+        {
+            MyWorld world = (MyWorld) getWorld();
+            int xTarget = world.playership.getX();
+            int yTarget = world.playership.getY();
+            turnTowards(xTarget, yTarget);
+        }
+        else 
+        {
+            turn(degree);
+        }
     }
     
     private void movement()

@@ -3,7 +3,6 @@ import greenfoot.*;
 
 public class EnemyShip extends Actor
 {
-
     public static int shipSpeed = 1;
     public static int shootEveryTick = 80;
     public static int score = 100;
@@ -14,6 +13,11 @@ public class EnemyShip extends Actor
     public boolean isDead = false;
     private GreenfootImage health2 = new GreenfootImage("enemyBlack2_damage1.png");
     private GreenfootImage health1 = new GreenfootImage("enemyBlack2_damage2.png");
+    
+    private GreenfootSound baseHitSound = new GreenfootSound("BaseHit.mp3");
+    private int baseHitVolume = 40;
+    private GreenfootSound deadSound = new GreenfootSound("EnemyDown.mp3");
+    private int deadSoundVolume = 60;
     
     public void act() 
     {
@@ -44,6 +48,7 @@ public class EnemyShip extends Actor
     private void fire()
     {
         EnemyBullet bullet = new EnemyBullet();
+        bullet.degree = 90;
         World world = getWorld();
         int xPosi = getX();
         int yPosi = (int)(getY()+(shipSizeY/2));
@@ -77,6 +82,8 @@ public class EnemyShip extends Actor
         }
         else if(health <= 0)
         {
+            deadSound.setVolume(deadSoundVolume);
+            deadSound.play();
             addScore(score);
             isDead = true;
         }
@@ -104,6 +111,11 @@ public class EnemyShip extends Actor
         {
             MyWorld world = (MyWorld) getWorld();
             GameTracker tracker = world.getGameTracker();
+            if(tracker.isGameOver == false && tracker.baseHealth > 1)
+            {
+                baseHitSound.setVolume(baseHitVolume);
+                baseHitSound.play();
+            }
             tracker.baseHit(1);
             isDead = true;
         }

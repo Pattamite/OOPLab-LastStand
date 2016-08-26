@@ -20,10 +20,12 @@ public class EnemySpawner extends Actor
     private int spawnPositionY = 80;
     private int lastSpawnColumn = Greenfoot.getRandomNumber(spawnPositionX.length);
     
+    private int enemyTypeRate[] = {100, 0, 0};
+    
     public EnemySpawner()
     {
         GreenfootImage img = getImage();
-        //img.clear();
+        img.clear();
     }
     
     public void act() 
@@ -56,6 +58,60 @@ public class EnemySpawner extends Actor
         {
             guaranteeTemp = guaranteeTickCap;
         }
+        if(level == 3)
+        {
+            enemyTypeRate[0] = 80;
+            enemyTypeRate[1] = 0;
+            enemyTypeRate[2] = 20;
+        }
+        else if(level == 4)
+        {
+            enemyTypeRate[0] = 70;
+            enemyTypeRate[1] = 0;
+            enemyTypeRate[2] = 30;
+        }
+        else if(level == 5)
+        {
+            enemyTypeRate[0] = 60;
+            enemyTypeRate[1] = 0;
+            enemyTypeRate[2] = 40;
+        }
+        else if(level == 6)
+        {
+            enemyTypeRate[0] = 55;
+            enemyTypeRate[1] = 10;
+            enemyTypeRate[2] = 35;
+        }
+        else if(level == 7)
+        {
+            enemyTypeRate[0] = 50;
+            enemyTypeRate[1] = 20;
+            enemyTypeRate[2] = 30;
+        }
+        else if(level == 9)
+        {
+            enemyTypeRate[0] = 45;
+            enemyTypeRate[1] = 25;
+            enemyTypeRate[2] = 30;
+        }
+        else if(level == 12)
+        {
+            enemyTypeRate[0] = 40;
+            enemyTypeRate[1] = 30;
+            enemyTypeRate[2] = 30;
+        }
+        else if(level == 15)
+        {
+            enemyTypeRate[0] = 20;
+            enemyTypeRate[1] = 40;
+            enemyTypeRate[2] = 40;
+        }
+        else if(level == 20)
+        {
+            enemyTypeRate[0] = 10;
+            enemyTypeRate[1] = 45;
+            enemyTypeRate[2] = 45;
+        }
         
         currentSpawnTick = tempTick;
         guaranteeSpawnTick = guaranteeTemp;
@@ -78,16 +134,31 @@ public class EnemySpawner extends Actor
     
     private void spawnEnemy()
     {
+        World world = getWorld();
+        
         int spawnColumn = Greenfoot.getRandomNumber(spawnPositionX.length - 1);
         if(spawnColumn >= lastSpawnColumn)
         {
             spawnColumn = spawnColumn + 1;
         }
-        
         lastSpawnColumn = spawnColumn;
         
-        World world = getWorld();
-        EnemyShip enemyShip = new EnemyShip();
-        world.addObject(enemyShip, spawnPositionX[spawnColumn], spawnPositionY);
+        int enemyType = Greenfoot.getRandomNumber(100);
+        if(enemyType < enemyTypeRate[0])
+        {
+            EnemyShip enemyShip = new EnemyShip();
+            world.addObject(enemyShip, spawnPositionX[spawnColumn], spawnPositionY);
+        }
+        else if(enemyType < (enemyTypeRate[0] + enemyTypeRate[1]))
+        {
+            EnemyShip2 enemyShip = new EnemyShip2();
+            world.addObject(enemyShip, spawnPositionX[spawnColumn], spawnPositionY);
+        }
+        else
+        {
+            EnemyShip3 enemyShip = new EnemyShip3();
+            world.addObject(enemyShip, spawnPositionX[spawnColumn], spawnPositionY);
+        }
+        
     }
 }
